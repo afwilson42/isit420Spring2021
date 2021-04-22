@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     //-----make purchase record object
     let purchRecord = {
-        storeNumber: 0,
-        salesPersonID: 0,
+        StoreID: 0,
+        SalesPersonID: 0,
         itemNumber: 0,
         timePurch: 0,
         pricePaid: 0
@@ -19,33 +19,33 @@ document.addEventListener("DOMContentLoaded", function (event) {
     
         switch(storeSelect){
             case 1:
-                purchRecord.storeNumber = 98053;
-                purchRecord.salesPersonID = salesPersonSelect;
+                purchRecord.StoreID = 98053;
+                purchRecord.SalesPersonID = salesPersonSelect;
                 break;
             
             case 2:
-                purchRecord.storeNumber = 98007;
-                purchRecord.salesPersonID = salesPersonSelect + 4;
+                purchRecord.StoreID = 98007;
+                purchRecord.SalesPersonID = salesPersonSelect + 4;
                 break;
             
             case 3:
-                purchRecord.storeNumber = 98077;
-                purchRecord.salesPersonID = salesPersonSelect + 8;
+                purchRecord.StoreID = 98077;
+                purchRecord.SalesPersonID = salesPersonSelect + 8;
                 break;
 
             case 4:
-                purchRecord.storeNumber = 98055;
-                purchRecord.salesPersonID = salesPersonSelect + 12;
+                purchRecord.StoreID = 98055;
+                purchRecord.SalesPersonID = salesPersonSelect + 12;
                 break;
 
             case 5:
-                purchRecord.storeNumber = 98011;
-                purchRecord.salesPersonID = salesPersonSelect + 16;
+                purchRecord.StoreID = 98011;
+                purchRecord.SalesPersonID = salesPersonSelect + 16;
                 break;
 
             case 6:
-                purchRecord.storeNumber = 98046;
-                purchRecord.salesPersonID = salesPersonSelect + 20;
+                purchRecord.StoreID = 98046;
+                purchRecord.SalesPersonID = salesPersonSelect + 20;
                 break;
 
             default:
@@ -109,8 +109,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         buildOrder();
        
     // ---copy purchase data to web page for display
-       document.getElementById("storeNum").value = purchRecord.storeNumber;
-       document.getElementById("salesPerID").value = purchRecord.salesPersonID;
+       document.getElementById("storeNum").value = purchRecord.StoreID;
+       document.getElementById("salesPerID").value = purchRecord.SalesPersonID;
        document.getElementById("itemNum").value = purchRecord.itemNumber;
        document.getElementById("price").value = purchRecord.pricePaid;
        document.getElementById("purchTime").value = purchRecord.timePurch;
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     
             // send purchase record to mongo db
             $.ajax({
-                url: '/NewFourFifty/' ,
+                url: '/FiveHundredRecords/' ,
                 method: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 ul.appendChild(li);
                 var listNum = index +1;
     
-                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.storeNumber + " Salesperson ID: " + record.salesPersonID + " Item Number: " + record.itemNumber + " Price: " + record.pricePaid + " Purchase Time: " + record.timePurch;
+                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.StoreID + " Salesperson ID: " + record.SalesPersonID + " Item Number: " + record.itemNumber + " Price: " + record.pricePaid + " Purchase Time: " + record.timePurch;
             
             }
         }); 

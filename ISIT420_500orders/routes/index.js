@@ -5,7 +5,7 @@ var router = express.Router();
 // .ADO.Net is a wrapper over raw SQL server interface
 const mongoose = require("mongoose");
 
-const FourFiftyOrders = require("../450orders");
+const FiftyOrdersTest = require("../450orders");
 
 
 // edited to include my non-admin, user level account and PW on mongo atlas
@@ -45,9 +45,9 @@ router.post('/NewOrder', function(req, res) {
 });
 
 /* post a new purchase record and push to Mongo */
-router.post('/NewFourFifty', function(req, res) {
+router.post('/FiveHundredRecords', function(req, res) {
 
-  let aNewOrder = new FourFiftyOrders(req.body);  
+  let aNewOrder = new FiftyOrdersTest(req.body);  
   
 
   aNewOrder.save((err, newOrder) => {
@@ -65,7 +65,7 @@ router.post('/NewFourFifty', function(req, res) {
 // retrieve records
 router.get('/GetRecords', function(req, res) {
   // find {  takes values, but leaving it blank gets all}
-  FourFiftyOrders.find({}, (err, AllRecords) => {
+  FiftyOrdersTest.find({}, (err, AllRecords) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
