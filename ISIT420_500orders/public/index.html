@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>450 project</title>
+<link rel="stylesheet" type="text/css" href="/stylesheets/index.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+</head>
+
+<body>
+<h2>hw2 450 project with Mongo</h2>
+<br />
+
+
+<div id="hw01">
+    <h3>Generate One Order and Post to Node</h3>
+    <button type="button" id="button1">Create</button>
+    <br />
+    <br />
+    <label for="storeNum">Store Number:</label>
+    <input type="text" required="true" value="" readonly="true" id="storeNum">
+    <br />
+    <label for="salesPerID">Sales Person ID:</label>
+    <input type="text" required="true" value="" readonly="true" id="salesPerID">
+    <br />
+    <label for="itemNum">Item Number:</label>
+    <input type="text" required="true" value="" readonly="true" id="itemNum">
+    <br />
+    <label for="price">Price:</label>
+    <input type="text" required="true" value="" readonly="true" id="price">
+    <br />
+    <label for="purchTime">time of purchase:</label>
+    <input type="text" required="true" value="" readonly="true" id="purchTime">
+    <br />
+    <br />
+   <p>Post the created order to Node</p>
+    <button type="button" id=submit>SUBMIT</button>
+</div>
+
+<br />
+
+<div>
+    <h3>Generate or view 450 purchase records</h3>
+    <p>generate 450 records and post to database</p>
+    <button type="button" id="fullgen">MakeRecords</button>
+    <br />
+    <br />
+    <p>View current records in database</p>
+    <button type="button" id="retrieve">View Records</button>
+</div>
+<br />
+
+<div id="listDiv">
+</div>
+
+<script src="/javascripts/index.js"></script>
+</body>
+
+</html>
