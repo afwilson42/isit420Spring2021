@@ -6,9 +6,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     let purchRecord = {
         StoreID: 0,
         SalesPersonID: 0,
-        itemNumber: 0,
+        CdID: 0,
         timePurch: 0,
-        pricePaid: 0
+        PricePaid: 0
     }
 
     function buildOrder(timeStamp){
@@ -57,34 +57,34 @@ document.addEventListener("DOMContentLoaded", function (event) {
         
        switch(itemSelect){
             case 1:
-                purchRecord.itemNumber = 123456;
+                purchRecord.CdID = 123456;
                 break;
             case 2:
-                purchRecord.itemNumber = 123654;
+                purchRecord.CdID = 123654;
                 break;
             case 3:
-                purchRecord.itemNumber = 321456;
+                purchRecord.CdID = 321456;
                 break;
             case 4:
-                purchRecord.itemNumber = 321654;
+                purchRecord.CdID = 321654;
                 break;
             case 5:
-                purchRecord.itemNumber = 654123;
+                purchRecord.CdID = 654123;
                 break;
             case 6:
-                purchRecord.itemNumber = 654321;
+                purchRecord.CdID = 654321;
                 break;
             case 7:
-                purchRecord.itemNumber = 543216;
+                purchRecord.CdID = 543216;
                 break;
             case 8:
-                purchRecord.itemNumber = 354126;
+                purchRecord.CdID = 354126;
                 break;
             case 9:
-                purchRecord.itemNumber = 621453;
+                purchRecord.CdID = 621453;
                 break;
             case 10:
-                purchRecord.itemNumber = 623451;
+                purchRecord.CdID = 623451;
                 break;
             default:
                 break;
@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       
         
     //-----set price paid
-       purchRecord.pricePaid = Math.floor(Math.random() * (15 - 5 + 1)+ 5);
+       purchRecord.PricePaid = Math.floor(Math.random() * (15 - 5 + 1)+ 5);
     }
 
 
@@ -111,8 +111,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // ---copy purchase data to web page for display
        document.getElementById("storeNum").value = purchRecord.StoreID;
        document.getElementById("salesPerID").value = purchRecord.SalesPersonID;
-       document.getElementById("itemNum").value = purchRecord.itemNumber;
-       document.getElementById("price").value = purchRecord.pricePaid;
+       document.getElementById("itemNum").value = purchRecord.CdID;
+       document.getElementById("price").value = purchRecord.PricePaid;
        document.getElementById("purchTime").value = purchRecord.timePurch;
 
     });
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-    // Generate 450 records and post to database button function
+    // Generate 500 records and post to database button function
     document.getElementById("fullgen").addEventListener("click", function (){
 
         let day = new Date();
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         const minAdd = 2;
         let time = "";
         
-        for (i = 0; i < 450; i++){
+        for (i = 0; i < 500; i++){
 
             if(min >=60){
                 hr ++;
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             
         } // end of for loop
 
-    }); // end of 450 orders button function
+    }); // end of 500 orders button function
 
 
 
@@ -207,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 ul.appendChild(li);
                 var listNum = index +1;
     
-                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.StoreID + " Salesperson ID: " + record.SalesPersonID + " Item Number: " + record.itemNumber + " Price: " + record.pricePaid + " Purchase Time: " + record.timePurch;
+                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.StoreID + " Salesperson ID: " + record.SalesPersonID + " CD ID: " + record.CdID + " Price: " + record.PricePaid + " Purchase Time: " + record.timePurch;
             
             }
         }); 

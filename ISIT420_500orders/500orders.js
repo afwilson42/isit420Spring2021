@@ -16,7 +16,7 @@ const FiftyOrdersTest = new Schema({
     type: Number,
     required: true
   },
-  itemNumber: {
+  CdID: {
     type: Number,
     required: true
   },
@@ -24,7 +24,7 @@ const FiftyOrdersTest = new Schema({
     type: String,
     required: true
   },
-  pricePaid: {
+  PricePaid: {
     type: Number,
     required: true
   }
@@ -32,4 +32,3 @@ const FiftyOrdersTest = new Schema({
 });
 
 module.exports = mongoose.model("FiftyOrdersTest", FiftyOrdersTest);
-
