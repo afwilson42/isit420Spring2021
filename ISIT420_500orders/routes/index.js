@@ -12,7 +12,7 @@ const FiveHundredOrders = require("../500orders");
 // and also to include the name of the mongo DB that the collection is in (TaskDB)
 const dbURI =
 //"mongodb+srv://ISIT420User:ISIT420User@tiffcluster.5aju4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-  "mongodb+srv://isit420user:Th3L0veBug@cluster0-skb5s.azure.mongodb.net/ToDosDB?retryWrites=true&w=majority";
+"mongodb+srv://isit420user:Th3L0veBug@cluster0-skb5s.azure.mongodb.net/ToDosDB?retryWrites=true&w=majority";
 
 // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
 // by default, you need to set it to false.

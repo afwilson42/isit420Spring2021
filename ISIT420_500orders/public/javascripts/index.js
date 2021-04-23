@@ -119,9 +119,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
        PurchaseHour = purchRecord.HourPurch + dayHour();
 
-       if (PurchaseHour >= 23) {
+       if (PurchaseHour > 23) {
            PurchaseHour = PurchaseHour - 23;
-           purchRecord.HourPurch + 1;
+           purchRecord.DayPurch + 1;
        }
        purchRecord.HourPurch = PurchaseHour;
         
