@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
         DayPurch: 0,
         PricePaid: 0
     }
-
+    
+    // -- RNG for hour increment between 1 and 5
     function dayHour () {
 
         let hourAdd = Math.floor(Math.random() * (5 - 1 ) + 1);
