@@ -7,7 +7,7 @@ const mongoose = require("mongoose");
 // schema will enforce consistency in all our documents (records)
 const Schema = mongoose.Schema;
 
-const FiftyOrdersTest = new Schema({
+const FiveHundredOrders = new Schema({
     StoreID: {
     type: Number,
     required: true
@@ -20,7 +20,11 @@ const FiftyOrdersTest = new Schema({
     type: Number,
     required: true
   },
-  timePurch: {
+  DayPurch: {
+    type: String,
+    required: true
+  },
+  HourPurch: {
     type: String,
     required: true
   },
@@ -31,4 +35,4 @@ const FiftyOrdersTest = new Schema({
 
 });
 
-module.exports = mongoose.model("FiftyOrdersTest", FiftyOrdersTest);
+module.exports = mongoose.model("FiveHundredOrders", FiveHundredOrders);

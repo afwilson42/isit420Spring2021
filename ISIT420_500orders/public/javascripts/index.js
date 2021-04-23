@@ -1,17 +1,28 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
     let PurchaseOrders = [];
+    let PurchaseHour = 0;
+    let PuchaseDay = 0;
 
     //-----make purchase record object
     let purchRecord = {
         StoreID: 0,
         SalesPersonID: 0,
         CdID: 0,
-        timePurch: 0,
+        HourPurch: 0,
+        DayPurch: 0,
         PricePaid: 0
     }
 
-    function buildOrder(timeStamp){
+    function dayHour () {
+
+        let hourAdd = Math.floor(Math.random() * (5 - 1 ) + 1);
+
+        return hourAdd;
+
+    }
+
+    function buildOrder(){
         //------ store number and sales person ID generator
         let storeSelect = Math.floor(Math.random() * 6 + 1);
 
@@ -93,10 +104,25 @@ document.addEventListener("DOMContentLoaded", function (event) {
     //-----tiuestamp capture
        /*var today = new Date();
        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-       purchRecord.timePurch = time.toString(); */
+       purchRecord.HourPurch = time.toString(); */
 
-       purchRecord.timePurch = timeStamp;
-      
+       //purchRecord.HourPurch = timeStamp;
+    
+
+       
+    //-----set day
+       purchRecord.DayPurch = Math.floor(Math.random() * 365 - 1);
+
+    //-----set time
+       //purchRecord.HourPurch = Math.floor(Math.random() * (23 - 0 + 1) + 1);
+
+       PurchaseHour = purchRecord.HourPurch + dayHour();
+
+       if (PurchaseHour >= 23) {
+           PurchaseHour = PurchaseHour - 23;
+           purchRecord.HourPurch + 1;
+       }
+       purchRecord.HourPurch = PurchaseHour;
         
     //-----set price paid
        purchRecord.PricePaid = Math.floor(Math.random() * (15 - 5 + 1)+ 5);
@@ -113,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
        document.getElementById("salesPerID").value = purchRecord.SalesPersonID;
        document.getElementById("itemNum").value = purchRecord.CdID;
        document.getElementById("price").value = purchRecord.PricePaid;
-       document.getElementById("purchTime").value = purchRecord.timePurch;
+       document.getElementById("purchTime").value = purchRecord.HourPurch;
 
     });
 
@@ -144,6 +170,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // Generate 500 records and post to database button function
     document.getElementById("fullgen").addEventListener("click", function (){
 
+
+
         let day = new Date();
         let hr = day.getHours();
         let min = day.getMinutes();
@@ -165,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
 
             time = hr + ":" + min + ":" + sec;
+            
 
             buildOrder(time); // generate a purchase record
     
@@ -183,7 +212,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
             min += minAdd;          
             
-        } // end of for loop
+       } // end of for loop
 
     }); // end of 500 orders button function
 
@@ -207,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 ul.appendChild(li);
                 var listNum = index +1;
     
-                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.StoreID + " Salesperson ID: " + record.SalesPersonID + " CD ID: " + record.CdID + " Price: " + record.PricePaid + " Purchase Time: " + record.timePurch;
+                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.StoreID + " Salesperson ID: " + record.SalesPersonID + " Item Number: " + record.CdID + " Price: " + record.PricePaid + " Purchase Time: " + record.HourPurch + " Purchase Day: " + record.DayPurch;
             
             }
         }); 

@@ -5,12 +5,13 @@ var router = express.Router();
 // .ADO.Net is a wrapper over raw SQL server interface
 const mongoose = require("mongoose");
 
-const FiftyOrdersTest = require("../500orders");
+const FiveHundredOrders = require("../500orders");
 
 
 // edited to include my non-admin, user level account and PW on mongo atlas
 // and also to include the name of the mongo DB that the collection is in (TaskDB)
 const dbURI =
+//"mongodb+srv://ISIT420User:ISIT420User@tiffcluster.5aju4.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
   "mongodb+srv://isit420user:Th3L0veBug@cluster0-skb5s.azure.mongodb.net/ToDosDB?retryWrites=true&w=majority";
 
 // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
@@ -47,7 +48,7 @@ router.post('/NewOrder', function(req, res) {
 /* post a new purchase record and push to Mongo */
 router.post('/FiveHundredRecords', function(req, res) {
 
-  let aNewOrder = new FiftyOrdersTest(req.body);  
+  let aNewOrder = new FiveHundredOrders(req.body);  
   
 
   aNewOrder.save((err, newOrder) => {
@@ -65,7 +66,7 @@ router.post('/FiveHundredRecords', function(req, res) {
 // retrieve records
 router.get('/GetRecords', function(req, res) {
   // find {  takes values, but leaving it blank gets all}
-  FiftyOrdersTest.find({}, (err, AllRecords) => {
+  FiveHundredOrders.find({}, (err, AllRecords) => {
     if (err) {
       console.log(err);
       res.status(500).send(err);
