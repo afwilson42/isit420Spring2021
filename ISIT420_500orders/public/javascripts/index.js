@@ -129,6 +129,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
        purchRecord.PricePaid = Math.floor(Math.random() * (15 - 5 + 1)+ 5);
     }
 
+    //Records that generate when page is loaded up and displays.
+    buildOrder();
+        // ---copy purchase data to web page for display
+        document.getElementById("storeNum").value = purchRecord.StoreID;
+        document.getElementById("salesPerID").value = purchRecord.SalesPersonID;
+        document.getElementById("itemNum").value = purchRecord.CdID;
+        document.getElementById("price").value = purchRecord.PricePaid;
+        document.getElementById("purchTime").value = purchRecord.HourPurch;
+
 
     //  create One order button function
     document.getElementById("button1").addEventListener("click", function () {
@@ -147,23 +156,23 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 
     //Post one order to Node button function 
-    document.getElementById("submit").addEventListener("click", function () {
+    // document.getElementById("submit").addEventListener("click", function () {
 
-        // putting the the Subject in the URL for the PUT method
-        $.ajax({
-            url: '/NewOrder/' ,
-            method: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(purchRecord),
-            success: function (result) {
+    //     // putting the the Subject in the URL for the PUT method
+    //     $.ajax({
+    //         url: '/NewOrder/' ,
+    //         method: 'POST',
+    //         dataType: 'json',
+    //         contentType: 'application/json',
+    //         data: JSON.stringify(purchRecord),
+    //         success: function (result) {
               
-            }
+    //         }
         
     
-        });
+    //     });
     
-    });
+    // });
 
 
 
