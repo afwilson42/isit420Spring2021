@@ -108,7 +108,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
        purchRecord.HourPurch = time.toString(); */
 
        //purchRecord.HourPurch = timeStamp;
-    
 
        
     //-----set day
@@ -133,10 +132,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
     buildOrder();
         // ---copy purchase data to web page for display
         document.getElementById("storeNum").value = purchRecord.StoreID;
-        document.getElementById("salesPerID").value = purchRecord.SalesPersonID;
-        document.getElementById("itemNum").value = purchRecord.CdID;
-        document.getElementById("price").value = purchRecord.PricePaid;
-        document.getElementById("purchTime").value = purchRecord.HourPurch;
+        document.getElementById("salesPersonID").value = purchRecord.SalesPersonID;
+        document.getElementById("cdID").value = purchRecord.CdID;
+        document.getElementById("price").value = purchRecord.PricePaid;;
 
 
     //  create One order button function
@@ -146,14 +144,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
        
     // ---copy purchase data to web page for display
        document.getElementById("storeNum").value = purchRecord.StoreID;
-       document.getElementById("salesPerID").value = purchRecord.SalesPersonID;
-       document.getElementById("itemNum").value = purchRecord.CdID;
+       document.getElementById("salesPersonID").value = purchRecord.SalesPersonID;
+       document.getElementById("cdID").value = purchRecord.CdID;
        document.getElementById("price").value = purchRecord.PricePaid;
-       document.getElementById("purchTime").value = purchRecord.HourPurch;
 
     });
-
-
 
     //Post one order to Node button function 
     // document.getElementById("submit").addEventListener("click", function () {
@@ -175,12 +170,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     // });
 
 
-
-
     // Generate 500 records and post to database button function
     document.getElementById("fullgen").addEventListener("click", function (){
-
-
 
         let day = new Date();
         let hr = day.getHours();
@@ -202,8 +193,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 
             }
 
-            time = hr + ":" + min + ":" + sec;
-            
+            time = hr + ":" + min + ":" + sec;            
 
             buildOrder(time); // generate a purchase record
     
@@ -226,9 +216,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     }); // end of 500 orders button function
 
-
-
-
     //submit button function 
     document.getElementById("retrieve").addEventListener("click", function () {
         
@@ -246,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 ul.appendChild(li);
                 var listNum = index +1;
     
-                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.StoreID + " Salesperson ID: " + record.SalesPersonID + " Item Number: " + record.CdID + " Price: " + record.PricePaid + " Purchase Time: " + record.HourPurch + " Purchase Day: " + record.DayPurch;
+                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.StoreID + " Salesperson ID: " + record.SalesPersonID + " Item Number: " + record.CdID + " Price: " + record.PricePaid;
             
             }
         }); 
