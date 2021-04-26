@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         PricePaid: 0
     }
     
-    // function to generate day and hour for records when submitting
+    /* function to generate day and hour for records when submitting */
     function incrementTime(){
         let hourIncrement = Math.floor(Math.random() * 5) + 1;
         PurchaseHour += hourIncrement;
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         
     }
 
-
+    /* function to randomly create an order */
     function buildOrder(){
         //------ store number and sales person ID generator
         let storeSelect = Math.floor(Math.random() * 6 + 1);
@@ -106,24 +106,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 break;
        }
     
-       /*-----set day
-       purchRecord.DayPurch = Math.floor(Math.random() * 365 - 1);
-
-       //-----set time
-
-       PurchaseHour = purchRecord.HourPurch + dayHour();
-
-       if (PurchaseHour > 23) {
-           PurchaseHour = PurchaseHour - 23;
-           purchRecord.DayPurch + 1;
-       }
-       purchRecord.HourPurch = PurchaseHour; */
         
     //-----set price paid
        purchRecord.PricePaid = Math.floor(Math.random() * (15 - 5 + 1)+ 5);
 
     } // end of buildOrder
 
+    /*  function to publish contents of record to web html elements */
     function publishRecord () {
         document.getElementById("storeNum").value = purchRecord.StoreID;
         document.getElementById("salesPersonID").value = purchRecord.SalesPersonID;
