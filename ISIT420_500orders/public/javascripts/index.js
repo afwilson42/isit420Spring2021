@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
     /* declare variables */
-    let PurchaseOrders = [];
     let PurchaseHour = 0;
     let PurchaseDay = 1;
 
@@ -163,13 +162,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     /* Generate 500 records and post to database button function */
     document.getElementById("fullgen").addEventListener("click", function (){
-
-        let day = new Date();
-        let hr = day.getHours();
-        let min = day.getMinutes();
-        var sec = day.getSeconds();
-        const minAdd = 2;
-        let time = "";
         
         for (i = 0; i < 500; i++){         
 
