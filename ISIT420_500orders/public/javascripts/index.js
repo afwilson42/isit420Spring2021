@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
+    /* declare variables */
     let PurchaseOrders = [];
     let PurchaseHour = 0;
     let PuchaseDay = 0;
 
-    //-----make purchase record object
+    // make purchase record object
     let purchRecord = {
         StoreID: 0,
         SalesPersonID: 0,
@@ -64,10 +65,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 break;
         }
 
-    //------- item number generation
-       let itemSelect = Math.floor(Math.random() * 10 + 1);
+         //------- item number generation
+        let itemSelect = Math.floor(Math.random() * 10 + 1);
         
-       switch(itemSelect){
+        switch(itemSelect){
             case 1:
                 purchRecord.CdID = 123456;
                 break;
@@ -101,20 +102,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
             default:
                 break;
        }
-       
-    //-----tiuestamp capture
-       /*var today = new Date();
-       var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-       purchRecord.HourPurch = time.toString(); */
-
-       //purchRecord.HourPurch = timeStamp;
-
-       
-    //-----set day
+    
+       //-----set day
        purchRecord.DayPurch = Math.floor(Math.random() * 365 - 1);
 
-    //-----set time
-       //purchRecord.HourPurch = Math.floor(Math.random() * (23 - 0 + 1) + 1);
+       //-----set time
 
        PurchaseHour = purchRecord.HourPurch + dayHour();
 
@@ -126,51 +118,52 @@ document.addEventListener("DOMContentLoaded", function (event) {
         
     //-----set price paid
        purchRecord.PricePaid = Math.floor(Math.random() * (15 - 5 + 1)+ 5);
-    }
 
-    //Records that generate when page is loaded up and displays.
-    buildOrder();
-        // ---copy purchase data to web page for display
+    } // end of buildOrder
+
+    function publishRecord () {
         document.getElementById("storeNum").value = purchRecord.StoreID;
         document.getElementById("salesPersonID").value = purchRecord.SalesPersonID;
         document.getElementById("cdID").value = purchRecord.CdID;
-        document.getElementById("price").value = purchRecord.PricePaid;;
+        document.getElementById("price").value = purchRecord.PricePaid;
+    }
 
 
-    //  create One order button function
+    buildOrder();
+        // ---copy purchase data to web page for display
+    publishRecord();
+        /* document.getElementById("storeNum").value = purchRecord.StoreID;
+        document.getElementById("salesPersonID").value = purchRecord.SalesPersonID;
+        document.getElementById("cdID").value = purchRecord.CdID;
+        document.getElementById("price").value = purchRecord.PricePaid; */
+
+//-------------------------------------------------------------------------------------------------
+
+    /*  create One order button function */
     document.getElementById("button1").addEventListener("click", function () {
 
         buildOrder();
-       
-    // ---copy purchase data to web page for display
-       document.getElementById("storeNum").value = purchRecord.StoreID;
-       document.getElementById("salesPersonID").value = purchRecord.SalesPersonID;
-       document.getElementById("cdID").value = purchRecord.CdID;
-       document.getElementById("price").value = purchRecord.PricePaid;
+        publishRecord();
 
     });
 
-    //Post one order to Node button function 
-    // document.getElementById("submit").addEventListener("click", function () {
+    /* Post one order to Node button function */
+    document.getElementById("submit").addEventListener("click", function () {
 
-    //     // putting the the Subject in the URL for the PUT method
-    //     $.ajax({
-    //         url: '/NewOrder/' ,
-    //         method: 'POST',
-    //         dataType: 'json',
-    //         contentType: 'application/json',
-    //         data: JSON.stringify(purchRecord),
-    //         success: function (result) {
-              
-    //         }
-        
-    
-    //     });
-    
-    // });
+    // putting the the Subject in the URL for the PUT method
+         $.ajax({
+             url: '/NewOrder/' ,
+            method: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+           data: JSON.stringify(purchRecord),
+           success: function (result) {
+           }
+        });
+    });
 
 
-    // Generate 500 records and post to database button function
+    /* Generate 500 records and post to database button function */
     document.getElementById("fullgen").addEventListener("click", function (){
 
         let day = new Date();
@@ -195,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
             time = hr + ":" + min + ":" + sec;            
 
-            buildOrder(time); // generate a purchase record
+            buildOrder(); // generate a purchase record
     
             // send purchase record to mongo db
             $.ajax({
@@ -216,26 +209,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     }); // end of 500 orders button function
 
-    //submit button function 
-    document.getElementById("retrieve").addEventListener("click", function () {
-        
-        var listDiv = document.getElementById('listDiv');
-        var ul = document.createElement('ul');
-        listDiv.innerHTML = "";
-        
-         $.get("/GetRecords", function(data, status){  // AJAX get
-            
-            PurchaseOrders = data;  // put the returned server json data into our local array
-            listDiv.appendChild(ul);
-            PurchaseOrders.forEach(ProcessOneRecord); // build one li for each item in array
-            function ProcessOneRecord(record, index) {
-                var li = document.createElement('li');
-                ul.appendChild(li);
-                var listNum = index +1;
     
-                li.innerHTML=li.innerHTML + listNum + ": " + " Store Number: " + record.StoreID + " Salesperson ID: " + record.SalesPersonID + " Item Number: " + record.CdID + " Price: " + record.PricePaid;
-            
-            }
-        }); 
-    });
 });
